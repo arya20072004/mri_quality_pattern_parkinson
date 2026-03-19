@@ -10,8 +10,9 @@ scipy
 scikit-learn
 matplotlib
 Pillow
-streamlit
+streamlit==1.28.0
 plotly
 joblib
 nilearn
 gdown
+altair==4.2.2
