@@ -1,0 +1,57 @@
+*.tar.gz
+*.tar
+*.zip
+*.npy
+
+# ── Datasets (too large for GitHub) ─────────────────────────────
+neurocon_raw/
+taowu_raw/
+ntua-parkinson-dataset/
+
+# ── Processed data (regeneratable) ──────────────────────────────
+data/processed/
+data/slices/
+data/slices_ntua/
+data/*.npy
+
+# ── Trained models (large binaries) ─────────────────────────────
+models/*.pkl
+models/*.pth
+models/*.pt
+
+# ── Output files ─────────────────────────────────────────────────
+outputs/quality_reports/
+outputs/pipeline_results/
+outputs/*.png
+
+# ── Python ───────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+*.egg
+
+# ── Virtual environment ───────────────────────────────────────────
+myenv/
+venv/
+env/
+.env
+
+# ── VS Code ───────────────────────────────────────────────────────
+.vscode/
+*.code-workspace
+
+# ── Temp files ────────────────────────────────────────────────────
+*.tmp
+*.temp
+check_ntua.py
+check_ntua2.py
+extract_ntua.py
+fix_taowu_fmri.py
+*.ipynb
+
+# ── Keep these label CSVs ─────────────────────────────────────────
+!data/labels/
+!data/labels/*.csv

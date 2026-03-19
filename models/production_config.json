@@ -1,0 +1,7 @@
+{
+  "n_parcels": 15,
+  "tr": 3.48,
+  "low_f": 0.01,
+  "high_f": 0.1,
+  "n_features": 135
+}

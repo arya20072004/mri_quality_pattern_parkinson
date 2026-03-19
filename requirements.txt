@@ -1,0 +1,17 @@
+torch
+torchvision
+torchaudio
+monai
+nibabel
+SimpleITK
+numpy
+pandas
+scipy
+scikit-learn
+matplotlib
+Pillow
+streamlit
+plotly
+joblib
+nilearn
+gdown

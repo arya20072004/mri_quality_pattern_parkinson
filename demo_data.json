@@ -1,0 +1,1828 @@
+[
+  {
+    "subject": "sub-control032014",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.3,
+      "snr": 429.322,
+      "cnr": 856.111,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 11.258,
+      "ghosting": 0.2414
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0595,
+      "hc_probability": 0.9405,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032015",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.8,
+      "snr": 325.363,
+      "cnr": 453.268,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 14.737,
+      "ghosting": 0.1861
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.047,
+      "hc_probability": 0.953,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032016",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.3,
+      "snr": 359.553,
+      "cnr": 509.371,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 10.848,
+      "ghosting": 0.2416
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0776,
+      "hc_probability": 0.9224,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032017",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.3,
+      "snr": 430.335,
+      "cnr": 933.28,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 5.498,
+      "ghosting": 0.2129
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0166,
+      "hc_probability": 0.9834,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032018",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.7,
+      "snr": 473.62,
+      "cnr": 542.608,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 8.524,
+      "ghosting": 0.2558
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0216,
+      "hc_probability": 0.9784,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032019",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.9,
+      "snr": 359.299,
+      "cnr": 519.889,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 22.221,
+      "ghosting": 0.2666
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0452,
+      "hc_probability": 0.9548,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032020",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.9,
+      "snr": 424.001,
+      "cnr": 801.347,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 12.631,
+      "ghosting": 0.2166
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0083,
+      "hc_probability": 0.9917,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032021",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.2,
+      "snr": 597.794,
+      "cnr": 893.704,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 4.095,
+      "ghosting": 0.2085
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0445,
+      "hc_probability": 0.9555,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032022",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.3,
+      "snr": 435.15,
+      "cnr": 893.797,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 5.153,
+      "ghosting": 0.2604
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0335,
+      "hc_probability": 0.9665,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032023",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.7,
+      "snr": 451.228,
+      "cnr": 494.492,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 11.503,
+      "ghosting": 0.221
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0334,
+      "hc_probability": 0.9666,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032024",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.9,
+      "snr": 345.136,
+      "cnr": 479.997,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 11.372,
+      "ghosting": 0.2124
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0422,
+      "hc_probability": 0.9578,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032025",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.7,
+      "snr": 296.865,
+      "cnr": 467.151,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 16.858,
+      "ghosting": 0.2015
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0576,
+      "hc_probability": 0.9424,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032026",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.7,
+      "snr": 440.472,
+      "cnr": 964.556,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 2.276,
+      "ghosting": 0.227
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0486,
+      "hc_probability": 0.9514,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032027",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.6,
+      "snr": 318.031,
+      "cnr": 418.71,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 15.526,
+      "ghosting": 0.1966
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0861,
+      "hc_probability": 0.9139,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032028",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.8,
+      "snr": 397.577,
+      "cnr": 764.478,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 10.671,
+      "ghosting": 0.213
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0437,
+      "hc_probability": 0.9563,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032029",
+    "true_label": 0,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.1,
+      "snr": 308.186,
+      "cnr": 521.685,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 10.099,
+      "ghosting": 0.1973
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0365,
+      "hc_probability": 0.9635,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032030",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.9,
+      "snr": 322.313,
+      "cnr": 435.3,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 14.634,
+      "ghosting": 0.1794
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9673,
+      "hc_probability": 0.0327,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032031",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.6,
+      "snr": 411.926,
+      "cnr": 458.142,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 9.044,
+      "ghosting": 0.2174
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9878,
+      "hc_probability": 0.0122,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032032",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.1,
+      "snr": 344.037,
+      "cnr": 470.515,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 14.334,
+      "ghosting": 0.2155
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9746,
+      "hc_probability": 0.0254,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032033",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.9,
+      "snr": 333.694,
+      "cnr": 456.711,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 27.43,
+      "ghosting": 0.2431
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9653,
+      "hc_probability": 0.0347,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032034",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.2,
+      "snr": 313.34,
+      "cnr": 431.23,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 13.764,
+      "ghosting": 0.2086
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.98,
+      "hc_probability": 0.02,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032035",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.7,
+      "snr": 347.617,
+      "cnr": 463.455,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 13.393,
+      "ghosting": 0.2338
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9859,
+      "hc_probability": 0.0141,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032036",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.7,
+      "snr": 317.792,
+      "cnr": 446.393,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 12.179,
+      "ghosting": 0.2262
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9583,
+      "hc_probability": 0.0417,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032037",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.5,
+      "snr": 413.58,
+      "cnr": 449.23,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 15.417,
+      "ghosting": 0.2521
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9888,
+      "hc_probability": 0.0112,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032038",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.0,
+      "snr": 457.868,
+      "cnr": 530.29,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 9.99,
+      "ghosting": 0.2513
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9912,
+      "hc_probability": 0.0088,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032039",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.0,
+      "snr": 414.312,
+      "cnr": 895.424,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 9.949,
+      "ghosting": 0.2506
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9626,
+      "hc_probability": 0.0374,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032040",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.6,
+      "snr": 277.822,
+      "cnr": 453.14,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 16.591,
+      "ghosting": 0.2522
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9849,
+      "hc_probability": 0.0151,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032041",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.4,
+      "snr": 286.769,
+      "cnr": 299.999,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 22.259,
+      "ghosting": 0.2405
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.918,
+      "hc_probability": 0.082,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032042",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.6,
+      "snr": 310.434,
+      "cnr": 439.235,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 13.362,
+      "ghosting": 0.2376
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9829,
+      "hc_probability": 0.0171,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032043",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.1,
+      "snr": 419.214,
+      "cnr": 499.654,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 3.79,
+      "ghosting": 0.2123
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.979,
+      "hc_probability": 0.021,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032044",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 85.2,
+      "snr": 263.947,
+      "cnr": 343.947,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 13.263,
+      "ghosting": 0.1555
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9866,
+      "hc_probability": 0.0134,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032045",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.5,
+      "snr": 384.865,
+      "cnr": 410.268,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 15.851,
+      "ghosting": 0.2052
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9785,
+      "hc_probability": 0.0215,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032046",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.8,
+      "snr": 292.464,
+      "cnr": 461.73,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 16.414,
+      "ghosting": 0.1904
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9808,
+      "hc_probability": 0.0192,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032047",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.2,
+      "snr": 354.708,
+      "cnr": 498.263,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 13.701,
+      "ghosting": 0.2089
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9736,
+      "hc_probability": 0.0264,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032048",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.7,
+      "snr": 402.652,
+      "cnr": 779.316,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 12.453,
+      "ghosting": 0.2275
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9848,
+      "hc_probability": 0.0152,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032049",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.7,
+      "snr": 321.546,
+      "cnr": 388.53,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 10.529,
+      "ghosting": 0.2166
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9921,
+      "hc_probability": 0.0079,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032050",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.7,
+      "snr": 318.511,
+      "cnr": 421.978,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 14.915,
+      "ghosting": 0.1885
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9626,
+      "hc_probability": 0.0374,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032051",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 85.3,
+      "snr": 245.736,
+      "cnr": 397.936,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 15.252,
+      "ghosting": 0.1617
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9899,
+      "hc_probability": 0.0101,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032052",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.8,
+      "snr": 431.883,
+      "cnr": 469.009,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 14.668,
+      "ghosting": 0.2326
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9627,
+      "hc_probability": 0.0373,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032053",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.9,
+      "snr": 363.838,
+      "cnr": 533.491,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 11.469,
+      "ghosting": 0.2624
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9678,
+      "hc_probability": 0.0322,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032054",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.3,
+      "snr": 403.535,
+      "cnr": 590.516,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 20.15,
+      "ghosting": 0.2853
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9326,
+      "hc_probability": 0.0674,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032055",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.3,
+      "snr": 369.614,
+      "cnr": 516.652,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 10.58,
+      "ghosting": 0.2403
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9891,
+      "hc_probability": 0.0109,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032056",
+    "true_label": 1,
+    "dataset": "neurocon",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.2,
+      "snr": 459.773,
+      "cnr": 526.437,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 6.633,
+      "ghosting": 0.2232
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9699,
+      "hc_probability": 0.0301,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032057",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.3,
+      "snr": 437.502,
+      "cnr": 587.212,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 18.891,
+      "ghosting": 0.2278
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.3045,
+      "hc_probability": 0.6955,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-control032058",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.1,
+      "snr": 347.153,
+      "cnr": 430.52,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 17.485,
+      "ghosting": 0.2313
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0302,
+      "hc_probability": 0.9698,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032059",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 81.4,
+      "snr": 439.66,
+      "cnr": 914.788,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 0.0,
+      "ghosting": 0.2809
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.1507,
+      "hc_probability": 0.8493,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032060",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.6,
+      "snr": 356.366,
+      "cnr": 503.244,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 11.979,
+      "ghosting": 0.2322
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9218,
+      "hc_probability": 0.0782,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032061",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.4,
+      "snr": 463.074,
+      "cnr": 529.556,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 6.455,
+      "ghosting": 0.2647
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0334,
+      "hc_probability": 0.9666,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032062",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.8,
+      "snr": 387.524,
+      "cnr": 540.629,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 10.411,
+      "ghosting": 0.2598
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.3897,
+      "hc_probability": 0.6103,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-control032063",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.1,
+      "snr": 432.812,
+      "cnr": 621.911,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 21.49,
+      "ghosting": 0.2524
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.3557,
+      "hc_probability": 0.6443,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-control032064",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.6,
+      "snr": 457.404,
+      "cnr": 768.604,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 27.006,
+      "ghosting": 0.255
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9939,
+      "hc_probability": 0.0061,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032065",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.1,
+      "snr": 482.098,
+      "cnr": 980.77,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 6.47,
+      "ghosting": 0.2798
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.2605,
+      "hc_probability": 0.7395,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-control032066",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.8,
+      "snr": 504.37,
+      "cnr": 593.686,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 27.278,
+      "ghosting": 0.2975
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9849,
+      "hc_probability": 0.0151,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032067",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.6,
+      "snr": 421.068,
+      "cnr": 583.808,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 10.931,
+      "ghosting": 0.2728
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9886,
+      "hc_probability": 0.0114,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032068",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.1,
+      "snr": 546.616,
+      "cnr": 683.193,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 20.767,
+      "ghosting": 0.248
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9756,
+      "hc_probability": 0.0244,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032069",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.0,
+      "snr": 428.561,
+      "cnr": 648.158,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 17.211,
+      "ghosting": 0.2864
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9859,
+      "hc_probability": 0.0141,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032070",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.7,
+      "snr": 562.187,
+      "cnr": 1178.916,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 6.878,
+      "ghosting": 0.2493
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0257,
+      "hc_probability": 0.9743,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032071",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.5,
+      "snr": 559.535,
+      "cnr": 653.705,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 4.187,
+      "ghosting": 0.2458
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.6056,
+      "hc_probability": 0.3944,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-control032072",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.0,
+      "snr": 368.957,
+      "cnr": 481.948,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 12.76,
+      "ghosting": 0.2143
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.5835,
+      "hc_probability": 0.4165,
+      "confidence": "Low"
+    }
+  },
+  {
+    "subject": "sub-control032073",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.5,
+      "snr": 425.944,
+      "cnr": 687.315,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 23.352,
+      "ghosting": 0.2414
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.8034,
+      "hc_probability": 0.1966,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032074",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.4,
+      "snr": 493.759,
+      "cnr": 552.319,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 8.775,
+      "ghosting": 0.2756
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9075,
+      "hc_probability": 0.0925,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032075",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.5,
+      "snr": 597.131,
+      "cnr": 835.323,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 11.129,
+      "ghosting": 0.2299
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.855,
+      "hc_probability": 0.145,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-control032076",
+    "true_label": 0,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.1,
+      "snr": 512.876,
+      "cnr": 1107.811,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 2.021,
+      "ghosting": 0.2559
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9804,
+      "hc_probability": 0.0196,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032077",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.1,
+      "snr": 368.456,
+      "cnr": 524.533,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 10.081,
+      "ghosting": 0.2454
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9192,
+      "hc_probability": 0.0808,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032078",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.8,
+      "snr": 490.887,
+      "cnr": 641.406,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 30.061,
+      "ghosting": 0.2624
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9271,
+      "hc_probability": 0.0729,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032079",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.6,
+      "snr": 362.422,
+      "cnr": 535.441,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 18.686,
+      "ghosting": 0.2158
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0072,
+      "hc_probability": 0.9928,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032080",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.7,
+      "snr": 384.621,
+      "cnr": 483.747,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 6.207,
+      "ghosting": 0.2445
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9465,
+      "hc_probability": 0.0535,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032081",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.1,
+      "snr": 429.537,
+      "cnr": 585.755,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 23.813,
+      "ghosting": 0.2665
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9475,
+      "hc_probability": 0.0525,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032082",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.1,
+      "snr": 447.832,
+      "cnr": 581.865,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 13.6,
+      "ghosting": 0.2646
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9444,
+      "hc_probability": 0.0556,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032083",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.2,
+      "snr": 364.081,
+      "cnr": 585.35,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 26.889,
+      "ghosting": 0.2758
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.6282,
+      "hc_probability": 0.3718,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-patient032084",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.3,
+      "snr": 362.922,
+      "cnr": 507.424,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 12.692,
+      "ghosting": 0.2501
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.3404,
+      "hc_probability": 0.6596,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-patient032085",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.9,
+      "snr": 364.834,
+      "cnr": 715.143,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 27.7,
+      "ghosting": 0.2414
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.347,
+      "hc_probability": 0.653,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-patient032086",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 84.3,
+      "snr": 455.44,
+      "cnr": 666.325,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 24.55,
+      "ghosting": 0.2558
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0765,
+      "hc_probability": 0.9235,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032087",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.3,
+      "snr": 468.97,
+      "cnr": 665.07,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 6.58,
+      "ghosting": 0.266
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.0334,
+      "hc_probability": 0.9666,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032088",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.2,
+      "snr": 418.013,
+      "cnr": 585.398,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 9.422,
+      "ghosting": 0.2349
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.2323,
+      "hc_probability": 0.7677,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-patient032089",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.8,
+      "snr": 365.595,
+      "cnr": 390.505,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 17.926,
+      "ghosting": 0.2509
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.8147,
+      "hc_probability": 0.1853,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032090",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.9,
+      "snr": 467.997,
+      "cnr": 714.993,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 23.47,
+      "ghosting": 0.2705
+    },
+    "prediction": {
+      "label": 0,
+      "prediction": "Healthy Control",
+      "pd_probability": 0.4971,
+      "hc_probability": 0.5029,
+      "confidence": "Low"
+    }
+  },
+  {
+    "subject": "sub-patient032091",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.1,
+      "snr": 475.806,
+      "cnr": 698.39,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 7.093,
+      "ghosting": 0.2289
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.6953,
+      "hc_probability": 0.3047,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-patient032092",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.8,
+      "snr": 454.376,
+      "cnr": 630.825,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 9.972,
+      "ghosting": 0.2111
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.6235,
+      "hc_probability": 0.3765,
+      "confidence": "Medium"
+    }
+  },
+  {
+    "subject": "sub-patient032093",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.9,
+      "snr": 464.893,
+      "cnr": 629.008,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 10.435,
+      "ghosting": 0.2575
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9314,
+      "hc_probability": 0.0686,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032094",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.4,
+      "snr": 451.1,
+      "cnr": 657.81,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 6.642,
+      "ghosting": 0.2655
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.8057,
+      "hc_probability": 0.1943,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032095",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 83.6,
+      "snr": 406.054,
+      "cnr": 516.468,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 13.777,
+      "ghosting": 0.2414
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.8647,
+      "hc_probability": 0.1353,
+      "confidence": "High"
+    }
+  },
+  {
+    "subject": "sub-patient032096",
+    "true_label": 1,
+    "dataset": "taowu",
+    "qa": {
+      "grade": "A",
+      "quality_score": 82.6,
+      "snr": 456.166,
+      "cnr": 892.749,
+      "sharpness": 100.0,
+      "fov_coverage": 80.0,
+      "uniformity": 8.91,
+      "ghosting": 0.2661
+    },
+    "prediction": {
+      "label": 1,
+      "prediction": "Parkinson's Disease",
+      "pd_probability": 0.9918,
+      "hc_probability": 0.0082,
+      "confidence": "High"
+    }
+  }
+]
