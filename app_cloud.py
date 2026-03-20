@@ -188,11 +188,15 @@ with tab1:
 
         def show_slice(sl, title, col):
             sl = (sl-sl.min())/(sl.max()-sl.min()+1e-8)
-            fig = px.imshow(sl.T, color_continuous_scale="gray",
-                            origin="lower", title=title, aspect="equal")
-            fig.update_layout(coloraxis_showscale=False,
-                              margin=dict(l=0,r=0,t=30,b=0), height=220)
-            col.plotly_chart(fig, use_container_width=True)
+            fig, ax = plt.subplots(figsize=(4, 4))
+            ax.imshow(sl.T, cmap="gray", origin="lower")
+            ax.set_title(title, color="white", fontsize=11)
+            ax.axis("off")
+            fig.patch.set_facecolor("#0e1117")
+            ax.set_facecolor("#0e1117")
+            plt.tight_layout(pad=0)
+            col.pyplot(fig, use_container_width=True)
+            plt.close()
 
         show_slice(arr[:,:,mid[2]], "Axial",   c1)
         show_slice(arr[:,mid[1],:], "Coronal", c2)
@@ -223,19 +227,24 @@ with tab1:
         bar_colors = ["#00cc66" if v>=60 else
                       "#ffaa00" if v>=35 else "#ff3333"
                       for v in metrics_display.values()]
-        fig_bar = go.Figure(go.Bar(
-            x=list(metrics_display.values()),
-            y=list(metrics_display.keys()),
-            orientation='h', marker_color=bar_colors,
-            text=[f"{v:.1f}" for v in metrics_display.values()],
-            textposition='outside'
-        ))
-        fig_bar.update_layout(
-            title="Quality Metrics",
-            xaxis=dict(range=[0,115]),
-            height=260, margin=dict(l=0,r=40,t=40,b=0)
-        )
-        st.plotly_chart(fig_bar, use_container_width=True)
+        fig_bar, ax_bar = plt.subplots(figsize=(8, 3))
+        colors = ["#00cc66" if v>=60 else "#ffaa00" if v>=35
+                else "#ff3333" for v in metrics_display.values()]
+        bars = ax_bar.barh(list(metrics_display.keys()),
+                        list(metrics_display.values()),
+                        color=colors)
+        ax_bar.set_xlim(0, 115)
+        ax_bar.set_title("Quality Metrics", color="white")
+        ax_bar.set_facecolor("#1a1a2e")
+        fig_bar.patch.set_facecolor("#0e1117")
+        ax_bar.tick_params(colors="white")
+        ax_bar.spines[:].set_color("#444")
+        for bar, val in zip(bars, metrics_display.values()):
+            ax_bar.text(bar.get_width()+1, bar.get_y()+bar.get_height()/2,
+                        f"{val:.1f}", va="center", color="white", fontsize=9)
+        plt.tight_layout()
+        st.pyplot(fig_bar, use_container_width=True)
+        plt.close()
 
         with st.expander("Raw values"):
             rc1,rc2,rc3 = st.columns(3)
@@ -284,36 +293,53 @@ with tab2:
 
     with gc1:
         grade_counts = demo_df["QA Grade"].value_counts()
-        fig_grade = px.pie(
-            values=grade_counts.values,
-            names=grade_counts.index,
-            title="Quality Grade Distribution",
-            color_discrete_map={"A":"#00cc66","B":"#88cc00",
-                                 "C":"#ffaa00","FAIL":"#ff3333"}
-        )
-        st.plotly_chart(fig_grade, use_container_width=True)
+        fig_pie, ax_pie = plt.subplots(figsize=(5, 4))
+        grade_colors_map = {"A":"#00cc66","B":"#88cc00",
+                            "C":"#ffaa00","FAIL":"#ff3333"}
+        colors_pie = [grade_colors_map.get(g,"#888")
+                    for g in grade_counts.index]
+        ax_pie.pie(grade_counts.values, labels=grade_counts.index,
+                colors=colors_pie, autopct='%1.1f%%',
+                textprops={'color':'white'})
+        ax_pie.set_title("Quality Grade Distribution", color="white")
+        fig_pie.patch.set_facecolor("#0e1117")
+        st.pyplot(fig_pie, use_container_width=True)
+        plt.close()
 
     with gc2:
         pred_df = predicted.copy()
         label   = demo_df[demo_df["Prediction"]!="N/A"]["True Label"]
         counts  = label.value_counts()
-        fig_dist = px.bar(
-            x=counts.index, y=counts.values,
-            title="True Label Distribution (Predicted Subjects)",
-            color=counts.index,
-            color_discrete_map={"Control":"#3399ff","Patient":"#ff6666"}
-        )
-        fig_dist.update_layout(showlegend=False)
-        st.plotly_chart(fig_dist, use_container_width=True)
+        fig_dist, ax_dist = plt.subplots(figsize=(5, 4))
+        dist_colors = ["#3399ff" if x=="Control" else "#ff6666"
+                    for x in counts.index]
+        ax_dist.bar(counts.index, counts.values, color=dist_colors)
+        ax_dist.set_title("True Label Distribution", color="white")
+        ax_dist.set_facecolor("#1a1a2e")
+        fig_dist.patch.set_facecolor("#0e1117")
+        ax_dist.tick_params(colors="white")
+        ax_dist.spines[:].set_color("#444")
+        plt.tight_layout()
+        st.pyplot(fig_dist, use_container_width=True)
+        plt.close()
 
     # QA score distribution
-    fig_qa = px.histogram(
-        demo_df, x="QA Score", color="True Label",
-        nbins=20, title="Quality Score Distribution by Group",
-        color_discrete_map={"Control":"#3399ff","Patient":"#ff6666"},
-        barmode="overlay", opacity=0.7
-    )
-    st.plotly_chart(fig_qa, use_container_width=True)
+    fig_qa, ax_qa = plt.subplots(figsize=(10, 3))
+    controls = demo_df[demo_df["True Label"]=="Control"]["QA Score"]
+    patients = demo_df[demo_df["True Label"]=="Patient"]["QA Score"]
+    ax_qa.hist(controls, bins=20, alpha=0.7,
+            color="#3399ff", label="Control")
+    ax_qa.hist(patients, bins=20, alpha=0.7,
+            color="#ff6666", label="Patient")
+    ax_qa.set_title("Quality Score Distribution", color="white")
+    ax_qa.set_facecolor("#1a1a2e")
+    fig_qa.patch.set_facecolor("#0e1117")
+    ax_qa.tick_params(colors="white")
+    ax_qa.spines[:].set_color("#444")
+    ax_qa.legend()
+    plt.tight_layout()
+    st.pyplot(fig_qa, use_container_width=True)
+    plt.close()
 
     # Full table
     st.subheader("Per-Subject Results")

@@ -16,3 +16,4 @@ joblib
 nilearn
 gdown
 altair==4.2.2
+matplotlib
