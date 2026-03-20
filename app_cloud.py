@@ -144,9 +144,55 @@ def bandpass_cloud(ts, tr, lo=0.01, hi=0.10):
     b, a = sp_signal.butter(4, [l, h], btype='band')
     return sp_signal.filtfilt(b, a, ts)
 
+@st.cache_resource
+def load_cloud_model():
+    path = os.path.join(os.path.dirname(__file__),
+                        "models", "model_cloud.json")
+    with open(path) as f:
+        return json.load(f)
+
+def predict_with_json_model(feats, model_data):
+    """Run inference using JSON model — no pickle needed."""
+    # Scale
+    mean = np.array(model_data["scaler_mean"])
+    std  = np.array(model_data["scaler_std"])
+    x    = (feats - mean) / (std + 1e-8)
+
+    # Select features
+    mask = np.array(model_data["selected_mask"])
+    x    = x[mask]
+
+    # GBM prediction
+    lr        = model_data["learning_rate"]
+    log_odds  = np.log(model_data["init_pred"] /
+                       (1 - model_data["init_pred"] + 1e-8))
+    pred_sum  = log_odds
+
+    for tree in model_data["trees"]:
+        cl  = tree["children_left"]
+        cr  = tree["children_right"]
+        ft  = tree["feature"]
+        thr = tree["threshold"]
+        val = tree["value"]
+
+        node = 0
+        while cl[node] != -1:
+            if x[ft[node]] <= thr[node]:
+                node = cl[node]
+            else:
+                node = cr[node]
+        pred_sum += lr * val[node][0][0]
+
+    pd_prob = 1 / (1 + np.exp(-pred_sum))
+    pd_prob = float(np.clip(pd_prob, 0.01, 0.99))
+    pred    = 1 if pd_prob > 0.5 else 0
+    return pred, pd_prob, 1 - pd_prob
+
 def predict_pd_cloud(fmri_arr, tr=3.48, n_parcels=15):
-    """Memory-efficient fMRI connectivity prediction."""
-    # Downsample spatially by 2x to save RAM
+    """Memory-efficient fMRI prediction using JSON model."""
+    model_data = load_cloud_model()
+    km_centers = np.array(model_data["km_centers"])
+
     data = fmri_arr[::2, ::2, ::2, :].astype(np.float32)
     T    = data.shape[3]
 
@@ -158,16 +204,16 @@ def predict_pd_cloud(fmri_arr, tr=3.48, n_parcels=15):
     vts = data[brain_mask]
     vts = sp_detrend(vts, axis=1)
     vts = vts / (vts.std(axis=1, keepdims=True) + 1e-8)
-
     filtered = np.array([bandpass_cloud(vts[i], tr)
                          for i in range(n_vox)])
 
     coords  = np.array(np.where(brain_mask)).T.astype(float)
     coords /= coords.max(axis=0) + 1e-8
-    km      = MiniBatchKMeans(n_clusters=n_parcels,
-                               random_state=42,
-                               n_init=3, max_iter=100)
-    labels  = km.fit_predict(coords)
+
+    # Use saved cluster centers — no random state needed
+    dists  = np.linalg.norm(
+        coords[:,None,:] - km_centers[None,:,:], axis=2)
+    labels = dists.argmin(axis=1)
 
     parcel_ts = np.zeros((n_parcels, T))
     for p in range(n_parcels):
@@ -195,24 +241,9 @@ def predict_pd_cloud(fmri_arr, tr=3.48, n_parcels=15):
             reho[p] = c[np.triu_indices(len(c), k=1)].mean()
 
     feats = np.concatenate([fc_feats, alff, reho])
-
-    # Load classifier
-    model_path = os.path.join(
-        os.path.dirname(__file__),
-        "models", "production_classifier.pkl")
-
-    if os.path.exists(model_path):
-        import joblib
-        clf  = joblib.load(model_path)
-        prob = clf.predict_proba(feats.reshape(1,-1))[0]
-        pred = int(clf.predict(feats.reshape(1,-1))[0])
-        return pred, float(prob[1]), float(prob[0]), fc
-    else:
-        # Fallback: threshold on connectivity strength
-        mean_fc = float(np.abs(fc_feats).mean())
-        pd_prob = min(0.95, max(0.05, mean_fc*1.5))
-        pred    = 1 if pd_prob > 0.5 else 0
-        return pred, pd_prob, 1-pd_prob, fc
+    pred, pd_prob, hc_prob = predict_with_json_model(
+        feats, model_data)
+    return pred, pd_prob, hc_prob, fc
 
 
 # ════════════════════════════════════════════════════════════════
