@@ -1,14 +1,11 @@
-"""
-Streamlit Cloud deployment version.
-Uses precomputed results — no heavy fMRI processing needed.
-"""
 import streamlit as st
 import numpy as np
 import json
 import os
 import pandas as pd
-import plotly.graph_objects as go
-import plotly.express as px
+import matplotlib.pyplot as plt
+import matplotlib
+matplotlib.use('Agg')
 import nibabel as nib
 import tempfile
 import warnings
@@ -33,7 +30,7 @@ demo_data = load_demo_data()
 demo_df   = pd.DataFrame([{
     "Subject":    d["subject"],
     "True Label": "Patient" if d["true_label"]==1 else "Control",
-    "Dataset":    d["dataset"],
+    "Dataset":    d.get("dataset","neurocon"),
     "QA Grade":   d["qa"]["grade"],
     "QA Score":   d["qa"]["quality_score"],
     "Prediction": d["prediction"]["prediction"]
@@ -49,7 +46,7 @@ demo_df   = pd.DataFrame([{
 
 
 # ════════════════════════════════════════════════════════════════
-# QUALITY ASSESSMENT (runs live on uploaded scans)
+# QUALITY ASSESSMENT
 # ════════════════════════════════════════════════════════════════
 
 def compute_snr(arr):
@@ -130,9 +127,45 @@ def assess_quality(arr, voxel_size):
             "Ghosting":ghost,"FOV Coverage":fov,
             "Uniformity":unif,"Score":score,"Grade":grade}
 
+def make_slice_fig(arr, titles):
+    """Show axial/coronal/sagittal slices side by side."""
+    mid = [s//2 for s in arr.shape]
+    slices = [arr[:,:,mid[2]], arr[:,mid[1],:], arr[mid[0],:,:]]
+    fig, axes = plt.subplots(1, 3, figsize=(12, 4))
+    fig.patch.set_facecolor("#0e1117")
+    for ax, sl, title in zip(axes, slices, titles):
+        sl_norm = (sl-sl.min())/(sl.max()-sl.min()+1e-8)
+        ax.imshow(sl_norm.T, cmap="gray", origin="lower")
+        ax.set_title(title, color="white", fontsize=11)
+        ax.axis("off")
+        ax.set_facecolor("black")
+    plt.tight_layout(pad=0.5)
+    return fig
+
+def make_bar_fig(metrics_display, bar_colors):
+    fig, ax = plt.subplots(figsize=(8, 3))
+    bars = ax.barh(list(metrics_display.keys()),
+                   list(metrics_display.values()),
+                   color=bar_colors)
+    ax.set_xlim(0, 115)
+    ax.set_title("Quality Metrics (normalized to 100)",
+                 color="white", fontsize=11)
+    ax.set_facecolor("#1a1a2e")
+    fig.patch.set_facecolor("#0e1117")
+    ax.tick_params(colors="white")
+    for spine in ax.spines.values():
+        spine.set_color("#444")
+    for bar, val in zip(bars, metrics_display.values()):
+        ax.text(bar.get_width()+1,
+                bar.get_y()+bar.get_height()/2,
+                f"{val:.1f}", va="center",
+                color="white", fontsize=9)
+    plt.tight_layout()
+    return fig
+
 
 # ════════════════════════════════════════════════════════════════
-# UI
+# SIDEBAR
 # ════════════════════════════════════════════════════════════════
 
 with st.sidebar:
@@ -143,9 +176,14 @@ with st.sidebar:
     st.markdown("1. Upload T1 MRI\n2. Quality Check\n3. PD Prediction")
     st.divider()
     st.markdown("**Dataset:**")
-    st.info(f"83 subjects\n36 HC | 47 PD\nAccuracy: 77.1%")
+    st.info("83 subjects\n36 HC | 47 PD\nAccuracy: 77.1%")
     st.divider()
     st.caption("⚠️ Research use only.\nNot for clinical diagnosis.")
+
+
+# ════════════════════════════════════════════════════════════════
+# MAIN
+# ════════════════════════════════════════════════════════════════
 
 st.title("🧠 MRI Quality Assessment & Parkinson's Disease Analysis")
 st.markdown("Upload a T1 MRI scan for quality assessment, "
@@ -159,7 +197,9 @@ tab1, tab2, tab3 = st.tabs([
 ])
 
 
-# ── TAB 1: UPLOAD ────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════
+# TAB 1: UPLOAD
+# ════════════════════════════════════════════════════════════════
 with tab1:
     st.subheader("Upload T1 MRI Scan for Quality Assessment")
     t1_file = st.file_uploader(
@@ -183,24 +223,10 @@ with tab1:
 
         # Scan preview
         st.subheader("🔍 Scan Preview")
-        mid = [s//2 for s in arr.shape]
-        c1, c2, c3 = st.columns(3)
-
-        def show_slice(sl, title, col):
-            sl = (sl-sl.min())/(sl.max()-sl.min()+1e-8)
-            fig, ax = plt.subplots(figsize=(4, 4))
-            ax.imshow(sl.T, cmap="gray", origin="lower")
-            ax.set_title(title, color="white", fontsize=11)
-            ax.axis("off")
-            fig.patch.set_facecolor("#0e1117")
-            ax.set_facecolor("#0e1117")
-            plt.tight_layout(pad=0)
-            col.pyplot(fig, use_container_width=True)
-            plt.close()
-
-        show_slice(arr[:,:,mid[2]], "Axial",   c1)
-        show_slice(arr[:,mid[1],:], "Coronal", c2)
-        show_slice(arr[mid[0],:,:], "Sagittal",c3)
+        fig_slices = make_slice_fig(arr,
+                                    ["Axial","Coronal","Sagittal"])
+        st.pyplot(fig_slices, use_container_width=True)
+        plt.close(fig_slices)
 
         # Quality assessment
         st.subheader("📋 Quality Assessment")
@@ -212,7 +238,8 @@ with tab1:
         grade_emoji = {"A":"✅","B":"✅","C":"⚠️","FAIL":"❌"}
 
         g1, g2, g3 = st.columns(3)
-        g1.metric("Quality Grade", f"{grade_emoji[grade]} {grade}")
+        g1.metric("Quality Grade",
+                  f"{grade_emoji.get(grade,'?')} {grade}")
         g2.metric("Quality Score", f"{score}/100")
         g3.metric("Shape",
                   f"{arr.shape[0]}×{arr.shape[1]}×{arr.shape[2]}")
@@ -227,33 +254,19 @@ with tab1:
         bar_colors = ["#00cc66" if v>=60 else
                       "#ffaa00" if v>=35 else "#ff3333"
                       for v in metrics_display.values()]
-        fig_bar, ax_bar = plt.subplots(figsize=(8, 3))
-        colors = ["#00cc66" if v>=60 else "#ffaa00" if v>=35
-                else "#ff3333" for v in metrics_display.values()]
-        bars = ax_bar.barh(list(metrics_display.keys()),
-                        list(metrics_display.values()),
-                        color=colors)
-        ax_bar.set_xlim(0, 115)
-        ax_bar.set_title("Quality Metrics", color="white")
-        ax_bar.set_facecolor("#1a1a2e")
-        fig_bar.patch.set_facecolor("#0e1117")
-        ax_bar.tick_params(colors="white")
-        ax_bar.spines[:].set_color("#444")
-        for bar, val in zip(bars, metrics_display.values()):
-            ax_bar.text(bar.get_width()+1, bar.get_y()+bar.get_height()/2,
-                        f"{val:.1f}", va="center", color="white", fontsize=9)
-        plt.tight_layout()
+
+        fig_bar = make_bar_fig(metrics_display, bar_colors)
         st.pyplot(fig_bar, use_container_width=True)
-        plt.close()
+        plt.close(fig_bar)
 
         with st.expander("Raw values"):
             rc1,rc2,rc3 = st.columns(3)
-            rc1.metric("SNR",         f"{qa['SNR']:.2f}")
-            rc1.metric("CNR",         f"{qa['CNR']:.2f}")
-            rc2.metric("Sharpness",   f"{qa['Sharpness']:.1f}")
-            rc2.metric("Ghosting",    f"{qa['Ghosting']:.4f}")
-            rc3.metric("FOV Coverage",f"{qa['FOV Coverage']:.1f}%")
-            rc3.metric("Uniformity",  f"{qa['Uniformity']:.1f}%")
+            rc1.metric("SNR",          f"{qa['SNR']:.2f}")
+            rc1.metric("CNR",          f"{qa['CNR']:.2f}")
+            rc2.metric("Sharpness",    f"{qa['Sharpness']:.1f}")
+            rc2.metric("Ghosting",     f"{qa['Ghosting']:.4f}")
+            rc3.metric("FOV Coverage", f"{qa['FOV Coverage']:.1f}%")
+            rc3.metric("Uniformity",   f"{qa['Uniformity']:.1f}%")
 
         if grade == "FAIL":
             st.error("❌ Scan REJECTED — quality too low. "
@@ -261,85 +274,125 @@ with tab1:
         else:
             st.success(f"✅ Scan PASSED — Grade {grade}")
             st.info("💡 For PD prediction, explore the "
-                    "**Dataset Results** tab to see how our model "
-                    "performs on 83 subjects with fMRI data.")
+                    "**Dataset Results** tab to see model "
+                    "performance on 83 subjects.")
     else:
-        st.info("👆 Upload a T1 MRI scan (.nii.gz) to get started.")
+        st.info("👆 Upload a T1 MRI (.nii.gz) to get started.")
         st.markdown("**Don't have a scan?** Check the "
-                    "**Dataset Results** tab to explore precomputed "
-                    "results on 83 subjects.")
+                    "**Dataset Results** tab for precomputed results.")
 
 
-# ── TAB 2: DATASET RESULTS ───────────────────────────────────────
+# ════════════════════════════════════════════════════════════════
+# TAB 2: DATASET RESULTS
+# ════════════════════════════════════════════════════════════════
 with tab2:
     st.subheader("📊 Pipeline Results — All 83 Subjects")
 
-    # Summary metrics
     total     = len(demo_df)
     passed    = (demo_df["QA Grade"] != "FAIL").sum()
     predicted = demo_df[demo_df["Prediction"] != "N/A"]
     correct   = (predicted["Correct"] == "✓").sum()
 
     m1,m2,m3,m4 = st.columns(4)
-    m1.metric("Total Subjects",    total)
-    m2.metric("Quality Passed",    f"{passed}/{total}")
-    m3.metric("With Prediction",   len(predicted))
+    m1.metric("Total Subjects",   total)
+    m2.metric("Quality Passed",   f"{passed}/{total}")
+    m3.metric("With Prediction",  len(predicted))
     m4.metric("Pipeline Accuracy",
               f"{correct/len(predicted):.1%}"
               if len(predicted)>0 else "N/A")
 
     st.divider()
+
+    # Grade pie chart
     gc1, gc2 = st.columns(2)
 
     with gc1:
         grade_counts = demo_df["QA Grade"].value_counts()
+        grade_color_map = {"A":"#00cc66","B":"#88cc00",
+                           "C":"#ffaa00","FAIL":"#ff3333"}
+        colors_pie = [grade_color_map.get(g,"#888")
+                      for g in grade_counts.index]
+
         fig_pie, ax_pie = plt.subplots(figsize=(5, 4))
-        grade_colors_map = {"A":"#00cc66","B":"#88cc00",
-                            "C":"#ffaa00","FAIL":"#ff3333"}
-        colors_pie = [grade_colors_map.get(g,"#888")
-                    for g in grade_counts.index]
-        ax_pie.pie(grade_counts.values, labels=grade_counts.index,
-                colors=colors_pie, autopct='%1.1f%%',
-                textprops={'color':'white'})
-        ax_pie.set_title("Quality Grade Distribution", color="white")
+        ax_pie.pie(grade_counts.values,
+                   labels=grade_counts.index,
+                   colors=colors_pie,
+                   autopct='%1.1f%%',
+                   textprops={'color':'white'})
+        ax_pie.set_title("Quality Grade Distribution",
+                          color="white", fontsize=11)
         fig_pie.patch.set_facecolor("#0e1117")
         st.pyplot(fig_pie, use_container_width=True)
-        plt.close()
+        plt.close(fig_pie)
 
     with gc2:
-        pred_df = predicted.copy()
-        label   = demo_df[demo_df["Prediction"]!="N/A"]["True Label"]
-        counts  = label.value_counts()
-        fig_dist, ax_dist = plt.subplots(figsize=(5, 4))
+        counts = demo_df[demo_df["Prediction"]!="N/A"][
+            "True Label"].value_counts()
         dist_colors = ["#3399ff" if x=="Control" else "#ff6666"
-                    for x in counts.index]
-        ax_dist.bar(counts.index, counts.values, color=dist_colors)
-        ax_dist.set_title("True Label Distribution", color="white")
+                       for x in counts.index]
+
+        fig_dist, ax_dist = plt.subplots(figsize=(5, 4))
+        ax_dist.bar(counts.index, counts.values,
+                    color=dist_colors)
+        ax_dist.set_title("True Label Distribution",
+                          color="white", fontsize=11)
         ax_dist.set_facecolor("#1a1a2e")
         fig_dist.patch.set_facecolor("#0e1117")
         ax_dist.tick_params(colors="white")
-        ax_dist.spines[:].set_color("#444")
+        for spine in ax_dist.spines.values():
+            spine.set_color("#444")
         plt.tight_layout()
         st.pyplot(fig_dist, use_container_width=True)
-        plt.close()
+        plt.close(fig_dist)
 
-    # QA score distribution
+    # QA score histogram
     fig_qa, ax_qa = plt.subplots(figsize=(10, 3))
-    controls = demo_df[demo_df["True Label"]=="Control"]["QA Score"]
-    patients = demo_df[demo_df["True Label"]=="Patient"]["QA Score"]
-    ax_qa.hist(controls, bins=20, alpha=0.7,
-            color="#3399ff", label="Control")
-    ax_qa.hist(patients, bins=20, alpha=0.7,
-            color="#ff6666", label="Patient")
-    ax_qa.set_title("Quality Score Distribution", color="white")
+    controls_qa = demo_df[demo_df["True Label"]=="Control"]["QA Score"]
+    patients_qa = demo_df[demo_df["True Label"]=="Patient"]["QA Score"]
+    ax_qa.hist(controls_qa.values, bins=20, alpha=0.7,
+               color="#3399ff", label="Control")
+    ax_qa.hist(patients_qa.values, bins=20, alpha=0.7,
+               color="#ff6666", label="Patient")
+    ax_qa.set_title("Quality Score Distribution by Group",
+                    color="white", fontsize=11)
+    ax_qa.set_xlabel("QA Score", color="white")
+    ax_qa.set_ylabel("Count", color="white")
     ax_qa.set_facecolor("#1a1a2e")
     fig_qa.patch.set_facecolor("#0e1117")
     ax_qa.tick_params(colors="white")
-    ax_qa.spines[:].set_color("#444")
-    ax_qa.legend()
+    for spine in ax_qa.spines.values():
+        spine.set_color("#444")
+    ax_qa.legend(facecolor="#1a1a2e", labelcolor="white")
     plt.tight_layout()
     st.pyplot(fig_qa, use_container_width=True)
-    plt.close()
+    plt.close(fig_qa)
+
+    # PD prediction results
+    st.subheader("🔬 PD Prediction Results")
+
+    pred_df = demo_df[demo_df["Prediction"] != "N/A"].copy()
+
+    # Confusion breakdown
+    tp = ((pred_df["True Label"]=="Patient") &
+          (pred_df["Correct"]=="✓")).sum()
+    tn = ((pred_df["True Label"]=="Control") &
+          (pred_df["Correct"]=="✓")).sum()
+    fp = ((pred_df["True Label"]=="Control") &
+          (pred_df["Correct"]=="✗")).sum()
+    fn = ((pred_df["True Label"]=="Patient") &
+          (pred_df["Correct"]=="✗")).sum()
+
+    r1,r2,r3,r4 = st.columns(4)
+    r1.metric("True Positives (PD✓)",  tp)
+    r2.metric("True Negatives (HC✓)",  tn)
+    r3.metric("False Positives (HC✗)", fp)
+    r4.metric("False Negatives (PD✗)", fn)
+
+    sensitivity = tp/(tp+fn) if (tp+fn)>0 else 0
+    specificity = tn/(tn+fp) if (tn+fp)>0 else 0
+    s1, s2 = st.columns(2)
+    s1.metric("Sensitivity (PD recall)", f"{sensitivity:.1%}")
+    s2.metric("Specificity (HC recall)", f"{specificity:.1%}")
 
     # Full table
     st.subheader("Per-Subject Results")
@@ -352,7 +405,6 @@ with tab2:
         }
     )
 
-    # Download results
     csv = demo_df.to_csv(index=False)
     st.download_button(
         "⬇️ Download Results CSV",
@@ -360,29 +412,33 @@ with tab2:
     )
 
 
-# ── TAB 3: ABOUT ─────────────────────────────────────────────────
+# ════════════════════════════════════════════════════════════════
+# TAB 3: ABOUT
+# ════════════════════════════════════════════════════════════════
 with tab3:
     st.subheader("About This System")
     st.markdown("""
     ### MRI Quality Assessment & Pattern Analysis for Parkinson's Disease
 
     **Module 1 — Quality Assessment**
-    - SNR, CNR, Sharpness, FOV Coverage, Uniformity, Ghosting
-    - Grade: A / B / C / FAIL
-    - Runs live on any uploaded T1 MRI
+    - Computes SNR, CNR, Sharpness, FOV Coverage, Uniformity, Ghosting
+    - Assigns quality grade: A (excellent) / B (good) / C (acceptable) / FAIL
+    - Runs live on any uploaded T1 MRI scan
 
     **Module 2 — Pattern Analysis (PD Detection)**
-    - Resting-state fMRI functional connectivity
-    - 15-parcel data-driven brain parcellation
-    - FC matrix + mALFF + ReHo (135 features)
-    - Gradient Boosting classifier
-    - CV Accuracy: 64.7% | Sensitivity: 74.1%
+    - Resting-state fMRI functional connectivity features
+    - Data-driven brain parcellation (15 regions, k-means)
+    - Features: FC matrix + mALFF + ReHo (135 features total)
+    - Gradient Boosting classifier trained on NEUROCON dataset
+    - 5-fold CV Accuracy: 64.7% | Sensitivity: 74.1%
     - **Pipeline Accuracy: 77.1%** (83 subjects)
 
-    **Datasets**
-    - NEUROCON: 43 subjects (TR=3.48s)
-    - TaoWu: 40 subjects (TR=2.00s)
-    - NTUA: 77 subjects (PNG format)
+    **Datasets Used**
+    | Dataset | Subjects | HC | PD |
+    |---------|----------|----|----|
+    | NEUROCON | 43 | 16 | 27 |
+    | TaoWu | 40 | 20 | 20 |
+    | NTUA | 77 | 23 | 54 |
 
     ---
     ⚠️ *Research purposes only — not for clinical diagnosis.*
@@ -391,7 +447,7 @@ with tab3:
     """)
 
     c1,c2,c3,c4 = st.columns(4)
-    c1.metric("Subjects",         "83")
+    c1.metric("Total Subjects",   "83")
     c2.metric("Features",         "135")
     c3.metric("CV Accuracy",      "64.7%")
     c4.metric("Pipeline Accuracy","77.1%")
