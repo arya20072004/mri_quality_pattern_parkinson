@@ -9,6 +9,9 @@ matplotlib.use('Agg')
 import nibabel as nib
 import tempfile
 import warnings
+from scipy.signal import detrend as sp_detrend
+from sklearn.cluster import MiniBatchKMeans
+import joblib
 warnings.filterwarnings("ignore")
 np.seterr(all='ignore')
 
@@ -201,10 +204,17 @@ tab1, tab2, tab3 = st.tabs([
 # TAB 1: UPLOAD
 # ════════════════════════════════════════════════════════════════
 with tab1:
-    st.subheader("Upload T1 MRI Scan for Quality Assessment")
+    st.subheader("Step 1 — Upload T1 MRI Scan")
     t1_file = st.file_uploader(
         "Upload T1 structural MRI (.nii or .nii.gz)",
-        type=["gz","nii"]
+        type=["gz","nii"], key="t1"
+    )
+
+    st.subheader("Step 2 — Upload fMRI Scan (optional)")
+    st.caption("Upload resting-state fMRI (.nii.gz) for PD prediction")
+    fmri_file = st.file_uploader(
+        "Upload resting-state fMRI (.nii.gz)",
+        type=["gz","nii"], key="fmri"
     )
 
     if t1_file:
@@ -221,14 +231,12 @@ with tab1:
         st.success(f"✅ Loaded — Shape: {arr.shape} | "
                    f"Voxel: {[round(v,2) for v in voxel_size]} mm")
 
-        # Scan preview
         st.subheader("🔍 Scan Preview")
         fig_slices = make_slice_fig(arr,
                                     ["Axial","Coronal","Sagittal"])
         st.pyplot(fig_slices, use_container_width=True)
         plt.close(fig_slices)
 
-        # Quality assessment
         st.subheader("📋 Quality Assessment")
         with st.spinner("Assessing quality..."):
             qa = assess_quality(arr, voxel_size)
@@ -273,13 +281,102 @@ with tab1:
                      "Please re-acquire the MRI.")
         else:
             st.success(f"✅ Scan PASSED — Grade {grade}")
-            st.info("💡 For PD prediction, explore the "
-                    "**Dataset Results** tab to see model "
-                    "performance on 83 subjects.")
+
+            # ── fMRI Prediction ───────────────────────────────
+            st.divider()
+            st.subheader("🔬 Step 2 — Parkinson's Disease Prediction")
+
+            if fmri_file:
+                with tempfile.NamedTemporaryFile(
+                        suffix=".nii.gz", delete=False) as tmp2:
+                    tmp2.write(fmri_file.read())
+                    fmri_tmp = tmp2.name
+
+                with st.spinner("Analyzing fMRI connectivity... "
+                                "(2-3 minutes)"):
+                    try:
+                        fmri_img = nib.load(fmri_tmp)
+                        fmri_arr = fmri_img.get_fdata().astype(
+                            np.float32)
+
+                        if fmri_arr.ndim != 4:
+                            st.error(
+                                f"Expected 4D fMRI but got "
+                                f"{fmri_arr.ndim}D. Please upload "
+                                f"the resting-state fMRI scan.")
+                        elif fmri_arr.shape[3] < 50:
+                            st.error(
+                                f"Too few timepoints "
+                                f"({fmri_arr.shape[3]}). "
+                                f"Need resting-state fMRI.")
+                        else:
+                            pred, pd_prob, hc_prob, fc_mat = \
+                                predict_pd_cloud(fmri_arr)
+
+                            # Result
+                            res1, res2 = st.columns([1,1])
+                            with res1:
+                                if pred == 1:
+                                    st.error(
+                                        f"### 🔴 Parkinson's Disease\n"
+                                        f"**PD Probability: "
+                                        f"{pd_prob:.1%}**")
+                                else:
+                                    st.success(
+                                        f"### 🟢 Healthy Control\n"
+                                        f"**HC Probability: "
+                                        f"{hc_prob:.1%}**")
+
+                                conf = ("High"
+                                        if max(pd_prob,hc_prob)>0.8
+                                        else "Medium"
+                                        if max(pd_prob,hc_prob)>0.6
+                                        else "Low")
+                                st.metric("Confidence", conf)
+                                st.metric("PD Risk",
+                                          f"{pd_prob:.1%}")
+                                st.metric("HC Probability",
+                                          f"{hc_prob:.1%}")
+
+                            with res2:
+                                # FC matrix heatmap
+                                fig_fc, ax_fc = plt.subplots(
+                                    figsize=(5,4))
+                                im = ax_fc.imshow(
+                                    fc_mat, cmap="RdBu_r",
+                                    vmin=-1, vmax=1)
+                                ax_fc.set_title(
+                                    "Functional Connectivity Matrix",
+                                    color="white", fontsize=10)
+                                ax_fc.set_xlabel("Parcel",
+                                                  color="white")
+                                ax_fc.set_ylabel("Parcel",
+                                                  color="white")
+                                ax_fc.tick_params(colors="white")
+                                fig_fc.patch.set_facecolor("#0e1117")
+                                ax_fc.set_facecolor("#0e1117")
+                                plt.colorbar(im, ax=ax_fc,
+                                             label="Fisher Z")
+                                plt.tight_layout()
+                                st.pyplot(fig_fc,
+                                          use_container_width=True)
+                                plt.close(fig_fc)
+
+                            st.caption(
+                                "⚠️ For research only. "
+                                "Not for clinical diagnosis.")
+
+                    except Exception as e:
+                        st.error(f"Prediction failed: {e}")
+            else:
+                st.info(
+                    "📎 Upload a resting-state fMRI scan above "
+                    "(.nii.gz from the func/ folder) to get "
+                    "PD prediction.\n\n"
+                    "Example file:\n"
+                    "`sub-patient032030_task-resting_run-1_bold.nii.gz`")
     else:
         st.info("👆 Upload a T1 MRI (.nii.gz) to get started.")
-        st.markdown("**Don't have a scan?** Check the "
-                    "**Dataset Results** tab for precomputed results.")
 
 
 # ════════════════════════════════════════════════════════════════
